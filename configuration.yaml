@@ -18,13 +18,14 @@ scene: !include scenes.yaml
 # Speed Test
 speedtestdotnet:
   scan_interval: 
+    hours: 1
     minutes: 30
   monitored_conditions:
     - ping
     - download
     - upload  
 
-#influx DB
+# Influx DB
 influxdb:
   host: a0d7b954-influxdb
   port: 8086
@@ -33,3 +34,14 @@ influxdb:
   password: !secret home_assistant_db_pw
   max_retries: 3
   default_measurement: state
+
+# Router
+device_tracker:
+  - platform: netgear
+    host: !secret router_host
+    username: !secret router_user
+    password: !secret router_pw 
+    new_device_defaults:
+      track_new_devices: false    
+
+
