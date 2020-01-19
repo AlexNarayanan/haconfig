@@ -1,1 +1,26 @@
-[]
+- id: '1578974352460'
+  alias: Alex Leave Home
+  description: 'Turn off bedroom lights when Alex leaves home.'
+  trigger:
+  - entity_id: device_tracker.oneplus7t
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - entity_id: ' switch.bedroom_wemo_mini'
+    service: homeassistant.turn_off
+- id: '1579044771302'
+  alias: Alex Return Home
+  description: 'Turn on the lights when Alex returns home.'
+  trigger:
+  - entity_id: device_tracker.oneplus7t
+    from: not_home
+    platform: state
+    to: home
+  condition:
+    condition: time
+    after: '16:00'
+  action:
+  - entity_id: ' switch.bedroom_wemo_mini'
+    service: homeassistant.turn_on

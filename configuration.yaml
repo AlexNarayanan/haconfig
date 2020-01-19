@@ -35,13 +35,16 @@ influxdb:
   max_retries: 3
   default_measurement: state
 
-# Router
+# Router & Device tracking
 device_tracker:
   - platform: netgear
     host: !secret router_host
     username: !secret router_user
     password: !secret router_pw 
+    consider_home: 24
     new_device_defaults:
       track_new_devices: false    
 
-
+# Wemo switches
+wemo:
+  discovery: true
