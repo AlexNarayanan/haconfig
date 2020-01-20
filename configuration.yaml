@@ -15,6 +15,12 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# SSL
+http:
+  base_url: !secret home_assistant_secure_hostname
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
 # Speed Test
 speedtestdotnet:
   scan_interval: 
